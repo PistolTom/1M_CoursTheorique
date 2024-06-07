@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur de Sons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Influence du nombre de bits</h1>
+
+    <button class="button" onclick="playSound('audio_4bit_44100Hz.mp3')">Son sur 4 bits</button>
+    <button class="button" onclick="playSound('audio_6bit_44100Hz.mp3')">Son sur 6 bits</button>
+    <button class="button" onclick="playSound('audio_10bit_44100Hz.mp3')">Son sur 10 bits</button>
+    <button class="button" onclick="playSound('musiqueChouette.mp3')">Son sur 16 bits</button>
+
+<!--     <div id="controls">
+        <button class="button" onclick="playAudio()">Play</button>
+        <button class="button" onclick="pauseAudio()">Pause</button>
+        <button class="button" onclick="stopAudio()">Stop</button>
+    </div> -->
+
+    <audio id="audioPlayer" controls style="display:none;">
+        <source id="audioSource" src="" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+
+
+    <h1>Influence de la fréquence d'échantillonnage</h1>
+
+    <button class="button" onclick="playSound('audio_16bit_1000Hz.mp3')">Son (ech. 1kHz)</button>
+    <button class="button" onclick="playSound('audio_16bit_3000Hz.mp3')">Son (ech. 3kHz)</button>
+    <button class="button" onclick="playSound('audio_16bit_8000Hz.mp3')">Son (ech. 8kHz)</button>
+    <button class="button" onclick="playSound('musiqueChouette.mp3')">Son (ech. 44.1kHz)</button>
+
+
+
+
+    <p>Musique originale : Furious Freak, Kevin MacLeod (incompetech.com),<a href="https://creativecommons.org/licenses/by/3.0/">License Creative Commons: By Attribution 3.0 License</a>
+    </p>
+
+        <p>
+        <a href="../../index.html">Retour à la page d'accueil</a>
+    </p>
+
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+        var audioSource = document.getElementById('audioSource');
+
+        function playSound(soundFile) {
+            audioSource.src = soundFile;
+            audioPlayer.load();
+            audioPlayer.play();
+            audioPlayer.style.display = 'block';
+        }
+
+        function playAudio() {
+            audioPlayer.play();
+        }
+
+        function pauseAudio() {
+            audioPlayer.pause();
+        }
+
+        function stopAudio() {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        }
+    </script>
+
+
+
+</body>
+</html>
